@@ -1,23 +1,22 @@
-/* Global demo styles */
-/* --------------------------------------- */
+// Global demo styles.
+// ---------------------------------------
 
 body {
-  background-color: $headBackgroundColour; //  Beneath the footer gets this if short page, hence not using $backgroundColour.
+  background-color: $backgroundColour;
   color: $bodyColour;
   overflow-x: hidden;
 }
 
-section {
-  background-color: $backgroundColour;
-  padding: 4rem 0;
-}
+.section {
+  padding: 2rem 0;
 
-.container {
-  margin: 0 auto;
-  position: relative;
-  width: 94%;
-  @include clearfix;
-  @include maxwidth;
+  @include breakpoint(break-1) {
+    padding: 3rem 0;
+  }
+
+  @include breakpoint(break-2) {
+    padding: 4rem 0;
+  }
 }
 
 img {
@@ -25,9 +24,14 @@ img {
   height: auto;
   vertical-align: middle;
   width: 100%;
+
   @include breakpoint(break-1) {
     margin: 0 auto;
     max-width: 100%;
     width: auto;
   }
+}
+
+.button-align {
+  @include baseline(zeta, $bodytype, 2, 2, all);
 }

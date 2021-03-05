@@ -1,20 +1,20 @@
-/* Navigation demo styles */
-/* --------------------------------------- */
+// Navigation demo styles.
+// ---------------------------------------
 
-/* responsive-nav.js styles */
+// responsive-nav.js styles.
 .nav-collapse {
 
   ul {
+    display: block;
+    list-style: none;
     margin: 0;
     padding: 0;
     width: 100%;
-    display: block;
-    list-style: none;
   }
 
   li {
-    width: 100%;
     display: block;
+    width: 100%;
   }
 
   &.opened {
@@ -26,30 +26,26 @@
 
   .nav-collapse {
     clip: rect(0 0 0 0);
-    max-height: 0;
-    position: absolute;
     display: block;
+    max-height: 0;
     overflow: hidden;
+    position: absolute;
     zoom: 1;
 
     @include breakpoint(break-1) {
-      position: relative;
       max-height: none;
+      position: relative;
     }
   }
 }
 
 .disable-pointer-events {
-  pointer-events: none !important;
+  pointer-events: none;
 }
 
 .nav-toggle {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
   user-select: none;
 
   @include breakpoint(break-1) {
@@ -57,62 +53,65 @@
   }
 }
 
-/* Demo overrides. Delete if not wanted. */
+// Demo overrides.
 .main-nav {
+
   @include breakpoint(break-1) {
     display: inline-block;
-    width: calc(100% - 165px);
+    width: calc(100% - 132px - 2rem);
     vertical-align: middle;
   }
 
   .main-nav__list {
-    width: 165px;
-    margin-left: 3%;
-    background-color: $linkColour;
-    border-top: 0.1rem solid $white;
-    text-align: center;
+    border-top: 0.1rem solid darken($white, 15%);
 
     @include breakpoint(break-1) {
-      width: 100%;
-      background-color: transparent;
       border: 0;
+      background-color: transparent;
       margin-left: 0;
       text-align: right;
+      width: 100%;
     }
   }
 
   li {
+    @include fontsize(16, 0);
+
     font-family: unquote(map-get($headingtype, font-family));
     font-style: normal;
     font-weight: map-get($headingtype, regular);
-    @include fontsize(16, all);
 
     a, span {
-      display: block;
-      padding: 10px 3%;
-      color: $white;
-      border-bottom: 0.1rem solid $white;
-      cursor: pointer;
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none;
 
+      border-bottom: 0.1rem solid darken($white, 15%);
+      color: $linkColour;
+      cursor: pointer;
+      display: block;
+      padding: 10px 3%;
+
       &:hover, &:active, &:focus {
-        background-color: lighten($linkColour,35%);
-        color: $hoverColour;
+        background-color: $linkColour;
+        color: $white;
       }
     }
 
     @include breakpoint(break-1) {
+      @include fontsize(12, 1);
+
       display: inline-block;
-      width: auto;
+      letter-spacing: 0.1rem;
       margin-right: 2rem;
-      padding-top: 7px; // Vertical centering
+      padding: 1rem 0;
+      text-transform: uppercase;
+      width: auto;
 
       a, span {
-        color: $white;
         border: 0;
+        color: $captionColour;
         display: inline;
         padding: 0;
 
@@ -122,32 +121,51 @@
         }
       }
     }
+
+    @include breakpoint(break-2) {
+      @include fontsize(12, 2);
+    }
+
+    @include breakpoint(break-3) {
+      @include fontsize(12, 3);
+    }
+
+    @include breakpoint(break-4) {
+      @include fontsize(12, 4);
+    }
   }
 }
 
 .js {
 
   .nav-collapse {
+
     @include breakpoint(break-1) {
       display: inline-block;
-      position: relative;
       max-height: none;
+      position: relative;
     }
   }
 
   .nav-toggle {
     display: block;
+    line-height: 0;
     position: absolute;
-    right: 5%;
-    top: 20px;
+    right: 3%;
+    top: 1.3rem;
 
     &:after {
-      content: '\2630';
-      @include fontsize(30);
+      background-image: url(../img/menu.svg);
+      background-position: 0 0;
+      background-size: 30px 60px;
+      content: '';
+      display: block;
+      height: 30px;
+      width: 30px;
     }
 
     &.active:after {
-      content: '\2715';
+      background-position: 0 30px;
     }
 
     @include breakpoint(break-1) {
